@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QHostAddress>
 #include <memory>
+#include <QFile>
 
 namespace Ui {
 class SettingDialog;

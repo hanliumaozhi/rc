@@ -6,8 +6,17 @@ SettingDialog::SettingDialog(QWidget *parent) :
     ui(new Ui::SettingDialog)
 {
     ui->setupUi(this);
-    ui->ip_str->setText("192.168.1.1");
     ui->port_str->setText("11223");
+    QFile file("config.txt");
+    if(file.exists()) {
+        if(file.open(QIODevice::ReadOnly)){
+            QTextStream in(&file);
+            QString ip_str = in.readLine();
+            ui->ip_str->setText(ip_str);
+        }
+    }else{
+        ui->ip_str->setText("192.168.1.1");
+    }
 }
 
 SettingDialog::~SettingDialog()
